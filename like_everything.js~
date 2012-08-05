@@ -55,14 +55,16 @@ var expandComments = function() {
 
 var clickThing = function(thing) {
 	var b = thing;
-	if (!b.clicked) return function() {
-		var click = document.createEvent("MouseEvents");
-		click.initMouseEvent("click", true, true, window,
-		0, 0, 0, 0, 0, false, false, false, false, 0, null);
-		button = document.getElementById("test");
-		b.dispatchEvent(click);
-		b.focus();
-		b.clicked = true;
+	if (!b.clicked){
+	   	return function() {
+			var click = document.createEvent("MouseEvents");
+			click.initMouseEvent("click", true, true, window,
+			0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			button = document.getElementById("test");
+			b.dispatchEvent(click);
+			b.focus();
+			b.clicked = true;
+		}
 	}
 	else function() {}
 };
