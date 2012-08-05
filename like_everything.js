@@ -21,7 +21,8 @@ var state;
 
 var activityQueue = []
 function run() {
-	var activity = activityQueue.shift()
+	var activity = activityQueue.shift();
+	console.log(activityQueue);
 	setTimeout(function(){
 		activity();
 		run();
