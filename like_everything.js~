@@ -30,7 +30,7 @@ function run() {
 
 
 var prevPageHeight = 0;
-function scrollAndWait() {
+var scrollAndWait = function() {
 	if(state == EXPAND_SCROLL && document.body.scrollHeight != prevPageHeight) {
 		prevPageHeight = document.body.scrollHeight;
 		window.scrollTo(0, document.body.scrollHeight);
@@ -39,5 +39,8 @@ function scrollAndWait() {
 }
 
 function start() {
+	console.log(scrollAndWait);
 	activityQueue.push(scrollAndWait);
 	run();
+}
+start();
