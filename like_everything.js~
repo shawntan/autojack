@@ -66,7 +66,7 @@ var clickThing = function(thing) {
 			b.clicked = true;
 		}
 	}
-	else function() {}
+	else return function() {};
 };
 
 function start() {
