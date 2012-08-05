@@ -49,7 +49,7 @@ var expandComments = function() {
 			activityQueue.push(clickThing(b));
 		})();
 	}
-	activityQueue(scrollAndWait);
+	activityQueue.push(scrollAndWait);
 }
 
 
