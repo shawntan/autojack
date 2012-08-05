@@ -41,8 +41,7 @@ var scrollAndWait = function() {
 }
 
 var expandComments = function() {
-	btnShowComments = queryDocument("//a[contains(concat(' ',@class,' '),' fbTimelineFeedbackCommentLoader ')]");
-	btnShowComments.concat(queryDocument("//input[contains(@name,'view_all')]"));
+	btnShowComments = queryDocument("//a[contains(concat(' ',@class,' '),' fbTimelineFeedbackCommentLoader ')] | //input[contains(@name,'view_all')]");
 	console.log(btnShowComments);
 	for(var i=0;i < btnShowComments.length; i++) {
 		(function() {
