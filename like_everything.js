@@ -24,7 +24,10 @@ function run() {
 	var activity = activityQueue.shift();
 	console.log(activityQueue);
 	setTimeout(function(){
-		activity();
+		if (activity) {
+			console.log(activity);
+			activity();
+		}
 		run();
 	},800);
 }
@@ -40,7 +43,6 @@ var scrollAndWait = function() {
 }
 
 function start() {
-	console.log(scrollAndWait);
 	activityQueue.push(scrollAndWait);
 	run();
 }
