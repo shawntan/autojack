@@ -35,11 +35,11 @@ function run() {
 
 var prevPageHeight = 0;
 var scrollAndWait = function() {
-	if(state == EXPAND_SCROLL && document.body.scrollHeight != prevPageHeight) {
+	if(document.body.scrollHeight != prevPageHeight) {
 		prevPageHeight = document.body.scrollHeight;
 		window.scrollTo(0, document.body.scrollHeight);
 		activityQueue.push(scrollAndWait);
-	} else state = EXPAND_CLICK;
+	}
 }
 
 function start() {
