@@ -41,5 +41,3 @@ function scrollAndWait() {
 function start() {
 	activityQueue.push(scrollAndWait);
 	run();
-}
-start();
