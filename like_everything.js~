@@ -22,10 +22,8 @@ var state;
 var activityQueue = []
 function run() {
 	var activity = activityQueue.shift();
-	console.log(activityQueue);
 	setTimeout(function(){
 		if (activity) {
-			console.log(activity);
 			activity();
 		}
 		run();
@@ -39,8 +37,33 @@ var scrollAndWait = function() {
 		prevPageHeight = document.body.scrollHeight;
 		window.scrollTo(0, document.body.scrollHeight);
 		activityQueue.push(scrollAndWait);
+		expandComments();
 	}
 }
+
+var expandComments = function() {
+	btnShowComments = queryDocument("//a[contains(concat(' ',@class,' '),' fbTimelineFeedbackCommentLoader ')]");
+	console.log(btnShowComments);
+	for(var i=0;i < btnShowComments.length; i++) {
+		(function() {
+			var b = btnShowComments[i];
+			activityQueue.push(clickThing(b));
+		})();
+	}
+}
+
+
+var clickThing = function(thing) {
+	var b = thing;
+	return function() {
+		var click = document.createEvent("MouseEvents");
+		click.initMouseEvent("click", true, true, window,
+		0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		button = document.getElementById("test");
+		b.dispatchEvent(click);
+		b.focus();
+	}
+};
 
 function start() {
 	activityQueue.push(scrollAndWait);
