@@ -37,8 +37,7 @@ var scrollAndWait = function() {
 		prevPageHeight = document.body.scrollHeight;
 		window.scrollTo(0, document.body.scrollHeight);
 		activityQueue.push(scrollAndWait);
-		expandComments();
-	}
+	} else expandComments();
 }
 
 var expandComments = function() {
@@ -50,19 +49,22 @@ var expandComments = function() {
 			activityQueue.push(clickThing(b));
 		})();
 	}
+	activityQueue(scrollAndWait);
 }
 
 
 var clickThing = function(thing) {
 	var b = thing;
-	return function() {
+	if (!b.clicked) return function() {
 		var click = document.createEvent("MouseEvents");
 		click.initMouseEvent("click", true, true, window,
 		0, 0, 0, 0, 0, false, false, false, false, 0, null);
 		button = document.getElementById("test");
 		b.dispatchEvent(click);
 		b.focus();
+		b.clicked = true;
 	}
+	else function() {}
 };
 
 function start() {
