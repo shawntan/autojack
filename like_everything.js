@@ -27,7 +27,7 @@ function run() {
 			activity();
 		}
 		run();
-	},800);
+	},1500);
 }
 
 
