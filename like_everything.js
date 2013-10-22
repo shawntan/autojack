@@ -54,7 +54,7 @@ var expandComments = function() {
 }
 
 var likeEverything = function() {
-	btnLike = queryDocument("//button[contains(concat(' ',@class,' '),' like_link ')] | //button[//*[contains(text(),'Like')]]");
+	btnLike = queryDocument("//a[@class='UFILikeLink'][text()='Like']");
 	for(var i=0;i < btnLike.length; i++) {
 		(function() {
 			var b = btnLike[i];
